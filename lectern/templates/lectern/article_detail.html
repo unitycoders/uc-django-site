@@ -1,22 +1,5 @@
-<style type="text/css">
-article{
-     margin: 0px auto;
-     max-width: 980px;
-    -webkit-column-count: 2; /* Chrome, Safari, Opera */
-    -moz-column-count: 2; /* Firefox */
-    column-count: 2;
-
-    -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
-    -moz-column-gap: 40px; /* Firefox */
-    column-gap: 40px;
-}
-
-article h1{
-	-webkit-column-span: all;
-	column-span: all;
-}
-
-</style>
+{% extends "base.html" %}
+{% block content %}
 
 <article>
 <h1>{{object.title}}</h1>
@@ -36,3 +19,4 @@ article h1{
  {% endfor %}
 </ul>
 </article>
+{% endblock %}
