@@ -1,0 +1,8 @@
+<h1>Our Articles</h1>
+
+{% for article in object_list %}
+  <article>
+    <h1><a href="{{article.get_absolute_url}}">{{article}}</a></h1>
+    <p>{{article.abstract}}</p>
+  </article>
+{% endfor %}
