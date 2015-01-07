@@ -1,7 +1,7 @@
 {% extends "base_centered.html" %}
 
 {% load i18n %}
-{% load md2 %}
+{% load markdown_deux_tags %}
 
 {% block content %}
 
@@ -16,7 +16,7 @@
 {% endif %}
 
 <section>
-{{object.body|markdown:"safe, code-friendly, fenced-code-blocks"}}
+{{object.body|markdown}}
 </section>
 
 <h2>{% trans "related links" %}</h2>

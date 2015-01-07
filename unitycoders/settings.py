@@ -38,7 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'django_markdown2',
+    'markdown_deux',
+    'bootstrap3',
     'lectern'
 )
 
@@ -89,6 +90,16 @@ STATICFILES_DIRS = [os.path.join(DATA_DIR, 'theme')]
 STATIC_ROOT = os.path.join(VAR_DIR, 'static')
 STATIC_URL = '/static/'
 
+# Markdown deux
+MARKDOWN_DEUX_STYLES = {
+    "default": {
+        "extras": {
+            "code-friendly": None,
+            "fenced-code-blocks": None,
+        },
+        "safe_mode": "escape",
+    },
+}
 
 # Django rest framework
 REST_FRAMEWORK = {
