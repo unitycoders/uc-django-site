@@ -9,3 +9,12 @@ class ArticleListView(ListView):
 class ArticleDetailView(DetailView):
 	model = Article
 
+# REST api views
+from rest_framework import viewsets
+from lectern.serializers import ArticleSerializer
+class ArticleViewSet(viewsets.ModelViewSet):
+	"""
+	API endpoint that allows articles to be viewed or edited.
+	"""
+	queryset = Article.objects.all()
+	serializer_class = ArticleSerializer

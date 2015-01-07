@@ -2,7 +2,10 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from rest_framework import routers
 
+from lectern.views import ArticleViewSet
+
 router = routers.DefaultRouter()
+router.register(r'articles', ArticleViewSet)
 
 urlpatterns = patterns('',
     # Examples:
