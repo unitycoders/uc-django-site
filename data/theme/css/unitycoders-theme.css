@@ -1,4 +1,21 @@
 .abstract {
-	width: 95%;
-	font-style: oblique;
+    width: 95%;
+    font-style: oblique;
+}
+
+/* Navbar login stuff (http://bootsnipp.com/snippets/featured/account-in-navbar) */
+.navbar-login {
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session {
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size {
+    font-size: 87px;
 }
