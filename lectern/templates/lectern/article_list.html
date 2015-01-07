@@ -1,6 +1,8 @@
 {% extends "base.html" %}
+{% load i18n %}
+
 {% block content %}
-<h1>Our Articles</h1>
+<h1>{% trans "our articles" %}</h1>
 
 {% for article in object_list %}
   <article>

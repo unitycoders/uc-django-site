@@ -11,7 +11,7 @@ class Article(models.Model):
 
 	def get_absolute_url(self):
             from django.core.urlresolvers import reverse
-            return reverse('article-detail', kwargs={'slug':self.slug})
+            return reverse('lectern:detail', kwargs={'slug':self.slug})
 
 	def __unicode__(self):
 		return self.title

@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'unitycoders.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^lectern/', include('lectern.urls')),
+    url(r'^articles/', include('lectern.urls', namespace='articles', app_name="lectern")),
     url(r'^admin/', include(admin.site.urls)),
 
     # REST API stuff

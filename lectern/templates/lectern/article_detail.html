@@ -1,18 +1,21 @@
 {% extends "base.html" %}
+{% load i18n %}
+
 {% block content %}
 
 <article>
 <h1>{{object.title}}</h1>
+
 {% if object.abstract %}
 <section>
-<h2>Abstract</h2>
+<h2>{% trans "abstract" %}</h2>
 {{object.abstract}}
 </section>
 {% endif %}
 
 {{object.body}}
 
-<h2>Related Links</h2>
+<h2>{% trans "related links" %}</h2>
 <ul>
  {% for related in object.relatedlink_set.all %}
    <li><a href="{{related.url}}">{{related.title}}</a></li>
