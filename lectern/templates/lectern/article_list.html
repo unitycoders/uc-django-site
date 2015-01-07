@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block content %}
-<h1>{% trans "our articles" %}</h1>
+<h1 class="sr-only">{% trans "our articles" %}</h1>
 
 {% for article in object_list %}
   <article>
