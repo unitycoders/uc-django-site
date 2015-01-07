@@ -6,5 +6,4 @@ class ArticleForm(forms.ModelForm):
         model = Article
         widgets = {
                 'abstract': forms.Textarea(attrs={'rows':4}),
-                'body': forms.Textarea(attrs={'rows':30})
         }
