@@ -1,6 +1,22 @@
-{% extends "base_centered.html" %}
+{% extends "base_multicol.html" %}
 {% load i18n %}
 {% load bootstrap3 %}
+
+{% block leftbar %}
+<h2 class="muted">Categories</h2>
+<ul class="nav nav-pills nav-stacked">
+    <li class="active"><a href="{% url "lectern:index" %}">All articles</a></li>
+    <li><a href="#TODO">Server management</a></li>
+    <li><a href="#TODO">Game Programming</a></li>
+    <li><a href="#TODO">Web Programming</a></li>
+</ul>
+
+<h2>Actions</h2>
+<ul class="nav nav-pills nav-stacked">
+    <li><a href="{% url "lectern:add" %}"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Write an article</a></li>
+    <li><a href="#TODO"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Request an article</a></li>
+</ul>
+{% endblock %}
 
 {% block content %}
 <h1 class="sr-only">{% trans "our articles" %}</h1>
