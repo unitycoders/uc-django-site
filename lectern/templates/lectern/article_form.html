@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load bootstrap3 %}
+{% load markdown_deux_tags %}
 
 {% block content %}
 
@@ -14,4 +15,6 @@
             </button>
             {% endbuttons %}
 </form>
+
+{% markdown_cheatsheet %}
 {% endblock %}
