@@ -6,9 +6,9 @@
 <h2 class="muted">Categories</h2>
 <ul class="nav nav-pills nav-stacked">
     <li class="active"><a href="{% url "lectern:index" %}">All articles</a></li>
-    <li><a href="#TODO">Server management</a></li>
-    <li><a href="#TODO">Game Programming</a></li>
-    <li><a href="#TODO">Web Programming</a></li>
+    {% for category in categories %}
+    <li><a href="{% url "lectern:category" category.slug %}">{{category}}</a></li>
+    {% endfor %}
 </ul>
 
 <h2>Actions</h2>

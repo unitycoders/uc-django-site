@@ -3,7 +3,8 @@ from views import ArticleListView, ArticleDetailView, ArticleCreate, ArticleUpda
 
 urlpatterns = patterns('',
     url(r'^$', ArticleListView.as_view(), name="index"),
+    url(r'^(?P<slug>[a-z0-9_-]+)/$', ArticleListView.as_view(), name="category"),
     url(r'^\+add$', ArticleCreate.as_view(), name="add"),
-    url(r'^(?P<slug>[a-z0-9_-]+)/$', ArticleDetailView.as_view(), name="detail"),
-    url(r'^(?P<slug>[a-z0-9_-]+)/\+edit$', ArticleUpdate.as_view(), name="edit"),
+    url(r'^(?P<category>[a-z0-0_-]+)/(?P<slug>[a-z0-9_-]+)/$', ArticleDetailView.as_view(), name="detail"),
+    url(r'^(?P<category>[a-z0-9_-]+)/(?P<slug>[a-z0-9_-]+)/\+edit$', ArticleUpdate.as_view(), name="edit"),
 )

@@ -2,14 +2,19 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
-from models import Article
+from models import Article, Category
 from forms import ArticleForm
 
 class ArticleListView(ListView):
-	model = Article
+    model = Article
+
+    def get_context_data(self, **kwargs):
+        context = super(ArticleListView, self).get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        return context
 
 class ArticleDetailView(DetailView):
-	model = Article
+    model = Article
 
 class ArticleCreate(CreateView):
     model = Article
@@ -23,8 +28,8 @@ class ArticleUpdate(UpdateView):
 from rest_framework import viewsets
 from lectern.serializers import ArticleSerializer
 class ArticleViewSet(viewsets.ModelViewSet):
-	"""
-	API endpoint that allows articles to be viewed or edited.
-	"""
-	queryset = Article.objects.all()
-	serializer_class = ArticleSerializer
+    """
+    API endpoint that allows articles to be viewed or edited.
+    """
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
