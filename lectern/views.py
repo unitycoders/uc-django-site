@@ -2,7 +2,7 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
-from models import Article, Category
+from models import Article, Category, Request
 from forms import ArticleForm
 
 class ArticleListView(ListView):
@@ -23,6 +23,15 @@ class ArticleCreate(CreateView):
 class ArticleUpdate(UpdateView):
     model = Article
     form_class = ArticleForm
+
+class RequestListView(ListView):
+    model = Request
+
+class RequestDetailView(DetailView):
+    model = Request
+
+class RequestCreate(CreateView):
+    model = Request
 
 # REST api views
 from rest_framework import viewsets

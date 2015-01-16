@@ -1,0 +1,17 @@
+{% extends "base_centered.html" %}
+
+{% load i18n %}
+{% load markdown_deux_tags %}
+
+{% block content %}
+
+<article>
+<h1>{{object.summary}}</h1>
+
+  <section>
+  {{object.details|markdown}}
+  </section>
+
+  <a href="{% url "lectern:request-list"%}">return to requests</a>
+</article>
+{% endblock %}
