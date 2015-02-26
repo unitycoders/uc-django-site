@@ -16,6 +16,15 @@ class ArticleListView(ListView):
 class ArticleDetailView(DetailView):
     model = Article
 
+class ArticleRawView(ArticleDetailView):
+    """Like article detail view, only display raw markdown"""
+    template_name = "lectern/article_raw.html"
+
+    def render_to_response(self, context, **response_kwargs):
+        response = super(ArticleRawView, self).render_to_response(context, **response_kwargs)
+        response['content-type'] = 'text/plain'
+        return response
+
 class ArticleCreate(CreateView):
     model = Article
     form_class = ArticleForm
