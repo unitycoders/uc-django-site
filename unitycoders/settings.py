@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'markdown_deux',
     'bootstrap3',
+    'crispy_forms',
     'lectern'
 )
 
@@ -109,3 +110,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+# django crispy forms
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
