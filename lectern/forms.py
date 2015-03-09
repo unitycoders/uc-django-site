@@ -12,7 +12,7 @@ class ArticleForm(forms.ModelForm):
         self.helper.layout = Layout(
                 TabHolder(
                     Tab('metadata', 'title', 'slug', 'category', 'abstract'),
-                    Tab('article', 'body'),
+                    Tab('article', 'body', HTML('<div id="body_ide"></div>')),
                 ),
                 ButtonHolder(Submit('submit', 'Submit', css_class='button white'))
         )
