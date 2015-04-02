@@ -39,7 +39,7 @@ class ArticleUpdate(views.LoginRequiredMixin,
 		    UpdateView):
     model = Article
     form_class = ArticleForm
-    permssion_required = "lectern.change_article"
+    permission_required = "lectern.change_article"
 
 class RequestListView(ListView):
     model = Request
