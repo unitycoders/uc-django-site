@@ -2,6 +2,8 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
+from braces import views
+
 from models import Article, Category, Request
 from forms import ArticleForm
 
@@ -25,13 +27,19 @@ class ArticleRawView(ArticleDetailView):
         response['content-type'] = 'text/plain'
         return response
 
-class ArticleCreate(CreateView):
+class ArticleCreate(views.LoginRequiredMixin,
+		    views.PermissionRequiredMixin,
+		    CreateView):
     model = Article
     form_class = ArticleForm
+    permission_required = "lectern.add_article"
 
-class ArticleUpdate(UpdateView):
+class ArticleUpdate(views.LoginRequiredMixin,
+		    views.PermissionRequiredMixin,
+		    UpdateView):
     model = Article
     form_class = ArticleForm
+    permssion_required = "lectern.change_article"
 
 class RequestListView(ListView):
     model = Request
