@@ -10,12 +10,25 @@ class UCLoginForm(AuthenticationForm):
         super(UCLoginForm, self).__init__(*args, **kwargs)
 
         self.helper = FormHelper()
-        self.helper.form_class = 'form-horizontal'
-        self.helper.label_class = 'col-lg-2'
-        self.helper.field_class = 'col-lg-8'
         self.helper.layout = Layout(
             'username',
             'password',
             Submit('submit','Sign in'),
         )
 	self.helper.html5_required = True
+
+class RegisterForm(forms.Form):
+	username = forms.CharField(label='username', max_length=100)
+	password = forms.CharField(label='password', widget=forms.PasswordInput, max_length=100)
+	key = forms.CharField(label="invite key", max_length=50)
+
+	def __init__(self, *args, **kwargs):
+		super(RegisterForm, self).__init__(*args, **kwargs)
+		self.helper = FormHelper()
+		self.helper.layout = Layout(
+			'username',
+			'password',
+			'key',
+			Submit('submit','Register'),
+		)
+		self.helper.html5_required = True
