@@ -41,7 +41,8 @@ INSTALLED_APPS = (
     'markdown_deux',
     'bootstrap3',
     'crispy_forms',
-    'lectern'
+    'lectern',
+    'gatekeeper'
 )
 
 MIDDLEWARE_CLASSES = (

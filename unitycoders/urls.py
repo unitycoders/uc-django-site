@@ -17,11 +17,8 @@ urlpatterns = patterns('',
 
     url(r'^$', TemplateView.as_view(template_name="unitycoders/index.html"), name='home'),
     url(r'^articles/', include('lectern.urls', namespace='articles', app_name="lectern")),
+    url(r'^accounts/', include('gatekeeper.urls', namespace='accounts', app_name='gatekeeper')),
     url(r'^admin/', include(admin.site.urls)),
-
-    # User login stuff
-    url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'accounts/login.html', 'authentication_form':UCLoginForm}),
-    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
 
     # REST API stuff
     url(r'^api/', include(router.urls)),
