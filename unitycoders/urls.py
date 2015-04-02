@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 from rest_framework import routers
 
 from lectern.views import ArticleViewSet
+from unitycoders.forms import UCLoginForm
 
 router = routers.DefaultRouter()
 router.register(r'articles', ArticleViewSet)
@@ -17,6 +18,10 @@ urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name="unitycoders/index.html"), name='home'),
     url(r'^articles/', include('lectern.urls', namespace='articles', app_name="lectern")),
     url(r'^admin/', include(admin.site.urls)),
+
+    # User login stuff
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'accounts/login.html', 'authentication_form':UCLoginForm}),
+    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
 
     # REST API stuff
     url(r'^api/', include(router.urls)),
