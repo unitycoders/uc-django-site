@@ -40,7 +40,9 @@ INSTALLED_APPS = (
     'rest_framework',
     'markdown_deux',
     'bootstrap3',
-    'lectern'
+    'crispy_forms',
+    'lectern',
+    'gatekeeper'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -71,7 +73,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-gb'
 
 TIME_ZONE = 'UTC'
 
@@ -109,3 +111,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+# django crispy forms
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

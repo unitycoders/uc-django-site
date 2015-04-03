@@ -1,0 +1,24 @@
+{% extends "base_centered.html" %}
+
+{% load i18n %}
+{% load bootstrap3 %}
+{% load markdown_deux_tags %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Sign up <small>new user</small></h1>
+
+<div class="row">
+  <div class="col-xs-6">
+    {% crispy form %}
+  </div>
+  <div class="col-xs-6">
+    <div class="lead">Account Terms of Service</div>
+    <ol> <!-- WP - placeholder, will talk Bruce, Dan et al about these before go-live :) -->
+      <li>You're not an evil spam bot trying to sell us stuff</li>
+      <li>You're not going to ask us for help with Unity3D</li>
+      <li>You agree to our <a href="https://fedoraproject.org/wiki/Legal:Fedora_Project_Contributor_Agreement">contributor licence agreement</a></li>
+    </ol>
+  </div>
+</div>
+{% endblock %}

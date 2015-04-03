@@ -1,9 +1,22 @@
-{% extends "base.html" %}
+{% extends "base_centered.html" %}
 
 {% block content %}
-<div>
-	{% include "unitycoders/carousel.html" %}
-	<h1>Welcome</h1>
-	<p class="lead">Hello and welcome to Unity Coders. We're a collection of people who are related to computers. However, we're rather nice in many ways, so please join us.</p>
-</div>
+  <h2>What We Do</h2>
+  <p>Unity Coders is an informal group of Free Software users and developers.</p>
+  <hr />
+
+  <div class="row">
+      <div class="col-sm-4">
+          <h2>Articles</h2>
+          <p>Our members have a range of interests and their collected wisdom can be found in our articles section.</p>
+      </div>
+      <div class="col-sm-4">
+          <h2>Code</h2>
+          <p>Our members work on a range of Free Software projects. </p>
+      </div>
+      <div class="col-sm-4">
+          <h2>Tools</h2>
+          <p>We supply advice and access a range of state of the art Free Software tools for our members to use. </p>
+      </div>
+  </div>
 {% endblock %}

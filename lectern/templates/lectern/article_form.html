@@ -2,16 +2,37 @@
 
 {% load i18n %}
 {% load bootstrap3 %}
+{% load markdown_deux_tags %}
+{% load crispy_forms_tags %}
+
+{% block page-scripts %}
+<script src="{{STATIC_URL}}/js/slugify/jquery.slugify.js" type="text/javascript"></script>
+<script type"text/javascript">
+$('#id_slug').slugify('#id_title');
+//$('#id_slug').addClass('collapse');
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.8/ace.js" type="text/javascript"></script>
+<script>
+    function buildEditor() {
+        var editor = ace.edit("body_ide");
+        var textarea = $("#id_body");
+        textarea.hide();
+        editor.getSession().setValue(textarea.val());
+        editor.on('change', function(){
+                textarea.val(editor.getSession().getValue());
+                });
+        editor.setTheme("ace/theme/github");
+        editor.getSession().setMode("ace/mode/markdown");
+    }
+    buildEditor();
+</script>
+<style type="text/css">
+.ace_editor{
+    height: 500px;
+}
+</style>
+{% endblock %}
 
 {% block content %}
-
-<form action="#" method="post" class="form">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-            {% buttons %}
-            <button type="submit" class="btn btn-primary">
-                {% bootstrap_icon "star" %} Submit
-            </button>
-            {% endbuttons %}
-</form>
+    {% crispy form %}
 {% endblock %}

@@ -13,21 +13,17 @@
 
 <h2>Actions</h2>
 <ul class="nav nav-pills nav-stacked">
-    {% if perms.lectern.article_add %}
     <li><a href="{% url "lectern:add" %}"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Write an article</a></li>
-    {% endif %}
     <li><a href="{% url "lectern:request" %}"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Request an article</a></li>
-    <li><a href="{% url "lectern:request-list" %}"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> View Requests</a></li>
 </ul>
 {% endblock %}
 
 {% block content %}
-<h1 class="sr-only">{% trans "our articles" %}</h1>
+<h1>{% trans "user requests" %}</h1>
 
+<ul>
 {% for article in object_list %}
-  <article>
-    <h1><a href="{{article.get_absolute_url}}">{{article}}</a></h1>
-    <p>{{article.abstract}}</p>
-  </article>
+    <li><a href="{{article.get_absolute_url}}">{{article}}</a></li>
 {% endfor %}
+</ul>
 {% endblock content %}

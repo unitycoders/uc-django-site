@@ -19,6 +19,7 @@
 {{object.body|markdown}}
 </section>
 
+{% if object.relatedlink_set.all %}
 <h2>{% trans "related links" %}</h2>
 <ul>
  {% for related in object.relatedlink_set.all %}
@@ -26,4 +27,5 @@
  {% endfor %}
 </ul>
 </article>
+{% endif %}
 {% endblock %}
