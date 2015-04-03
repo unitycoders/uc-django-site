@@ -5,15 +5,12 @@ from django.views.generic import TemplateView
 from rest_framework import routers
 
 from lectern.views import ArticleViewSet
-from unitycoders.views import HomeView
-from unitycoders.forms import UCLoginForm
 
 router = routers.DefaultRouter()
 router.register(r'articles', ArticleViewSet)
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', HomeView.as_view(), name='home'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$', TemplateView.as_view(template_name="unitycoders/index.html"), name='home'),
