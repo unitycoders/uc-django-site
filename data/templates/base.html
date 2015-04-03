@@ -58,6 +58,10 @@
 				</li>
 			</ul>
 		</div>
+	{% else %}
+		<ul class="nav navbar-nav navbar-right">
+		  <li><a href="{% url 'accounts:login' %}">Login</a></li>
+		<ul>
         {% endif %}
         </div>
 	</nav>
