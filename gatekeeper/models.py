@@ -1,7 +1,24 @@
 from django.db import models
 
+from django.contrib.auth.models import User
+
 import string
 import random
+import hashlib
+
+class Member(User):
+    class Meta:
+        proxy = True
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('profile-detail', (), {
+            'slug': self.username,
+        })
+
+    def _get_gravatar(self):
+        return hashlib.md5(self.email.lower()).hexdigest()
+    gravatar = property(_get_gravatar)
 
 # Create your models here.
 class Invite(models.Model):

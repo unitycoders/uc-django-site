@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="alert alert-warning">
+<strong>Warning</strong> This is just a mockup - data is hard coded for webpigeon
+</div>
+
+<div role="tabpanel">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#overview" aria-controls="home" role="tab" data-toggle="tab">Overview</a></li>
+    <li role="presentation"><a href="#account" aria-controls="home" role="tab" data-toggle="tab">Account</a></li>
+  </ul>
+
+  <div class="tab-content panel-body">
+    <div role="tabpanel" class="tab-pane active" id="overview">
+      <div class="row">
+        <div class="col-xs-3">
+	  <div class="thumbnail">
+        	<img src="https://www.gravatar.com/avatar/{{object.gravatar}}?s=200" alt="gravatar" />
+		<ul class="nav nav-pills nav-stacked">
+			<li><a href="">Messages</a></li>
+                	<li><a href="https://github.com/webpigeon/"><span class="fa fa-github"></span> Github</a></li>
+		</ul>
+	  </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2 class="panel-title">Contact Details</h2>
+        </div>
+        <div class="panel-body">
+          <dl>
+            <dt>Email</dt>
+            <dd>webpigeon@unitycoders.co.uk</dd>
+	    <dt>XMPP</dt>
+	    <dd>webpigeon@unitycoders.co.uk</dd>
+	    <dt>IRC</dt>
+	    <dd>WebPigeon</dd>
+          </dl>
+         </div>
+      </div>
+        </div>
+        <div class="col-xs-8">
+          <h1 style="margin-top: 0;">{{object.get_username}} <small>{{object.get_full_name}}</small></h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae ex enim. Donec semper nisl nec bibendum pretium. Aliquam in nulla turpis. Cras libero erat, molestie ut erat ut, vulputate rutrum nisi. Phasellus leo orci, gravida id diam eget, accumsan tempor neque. Cras laoreet augue ut nibh ullamcorper tempor. Maecenas malesuada nulla non diam tincidunt iaculis. Proin gravida nisl vitae urna tincidunt maximus. Fusce non congue eros. Donec libero ipsum, eleifend id quam nec, finibus laoreet felis. Vestibulum blandit nunc et arcu ullamcorper, ornare tristique justo ullamcorper. Duis eget diam felis. </p>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane" id="account">
+      <h1>Account Details</h1>
+	{% if object.is_staff %}<div class="alert alert-info">user is website admin</div>{% endif %}
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2 class="panel-title">Account Privilages</h2>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>Privlage</th>
+              <th>Description</td>
+              <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th>IRC Operator</th>
+              <td>Operator on the Freenode IRC channel</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <th>XMPP account</th>
+              <td>An @unitycoders.co.uk XMPP address</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <th>Minecraft server</th>
+              <td>Operator on Dinglebeard</td>
+              <td>Active</td>
+            </tr>
+            </tbody>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,10 +1,9 @@
 from django.shortcuts import render
+from django.views.generic import DetailView
 from django.views.generic.edit import FormView
 
-from django.contrib.auth.models import User
-
 from gatekeeper.forms import RegisterForm
-from gatekeeper.models import Invite
+from gatekeeper.models import Invite, Member
 
 # Create your views here.
 class RegisterView(FormView):
@@ -19,3 +18,7 @@ class RegisterView(FormView):
 		user = User.objects.create_user(form.cleaned_data['username'], invite.email, form.cleaned_data['password1'])
 		user.save()
 		return super(RegisterView, self).form_valid(form)
+
+class UserProfile(DetailView):
+	model = Member
+	slug_field = 'username'
