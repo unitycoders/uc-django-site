@@ -98,6 +98,7 @@ MARKDOWN_DEUX_STYLES = {
         "extras": {
             "code-friendly": None,
             "fenced-code-blocks": None,
+            "tables": None,
         },
         "safe_mode": "escape",
     },

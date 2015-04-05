@@ -13,6 +13,7 @@ class ArticleListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(ArticleListView, self).get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
+	context['selected'] = self.kwargs['slug'] if 'slug' in self.kwargs else None
         return context
 
 class ArticleDetailView(DetailView):

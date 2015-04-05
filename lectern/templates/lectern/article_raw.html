@@ -2,7 +2,6 @@
 title: {{object.title}}
 category: {{object.category}}
 ```
-
-{{object.abstract}}
-
-{{object.body}}
+{% if object.abstract %}{{object.abstract|safe}}
+{% endif %}
+{{object.body|safe}}

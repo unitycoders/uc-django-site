@@ -5,19 +5,21 @@
 {% block leftbar %}
 <h2 class="muted">Categories</h2>
 <ul class="nav nav-pills nav-stacked">
-    <li class="active"><a href="{% url "lectern:index" %}">All articles</a></li>
+    <li {% if not selected %}class="active"{% endif %}><a href="{% url "lectern:index" %}">All articles</a></li>
     {% for category in categories %}
-    <li><a href="{% url "lectern:category" category.slug %}">{{category}}</a></li>
+    <li {% if selected == category.slug %}class="active"{% endif %}><a href="{% url "lectern:category" category.slug %}">{{category}}</a></li>
     {% endfor %}
 </ul>
+{% endblock %}
 
-<h2>Actions</h2>
+{% block rightbar %}
+<h2 class="sr-only">Actions</h2>
 <ul class="nav nav-pills nav-stacked">
     {% if perms.lectern.article_add %}
-    <li><a href="{% url "lectern:add" %}"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Write an article</a></li>
+    <li><a href="{% url "lectern:add" %}"><i class="fa fa-plus" aria-hidden="true"></i> Write an article</a></li>
     {% endif %}
-    <li><a href="{% url "lectern:request" %}"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Request an article</a></li>
-    <li><a href="{% url "lectern:request-list" %}"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> View Requests</a></li>
+    <li><a href="{% url "lectern:request" %}"><i class="fa fa-question" aria-hidden="true"></i> Request an article</a></li>
+    <li><a href="{% url "lectern:request-list" %}"><i class="fa fa-tasks" aria-hidden="true"></i> View Requests</a></li>
 </ul>
 {% endblock %}
 

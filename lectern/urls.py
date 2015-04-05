@@ -10,5 +10,5 @@ urlpatterns = patterns('',
     url(r'^\+requests/\+add$', RequestCreate.as_view(), name="request"),
     url(r'^(?P<category>[a-z0-0_-]+)/(?P<slug>[a-z0-9_-]+)/$', ArticleDetailView.as_view(), name="detail"),
     url(r'^(?P<category>[a-z0-9_-]+)/(?P<slug>[a-z0-9_-]+)/\+edit$', ArticleUpdate.as_view(), name="edit"),
-    url(r'^(?P<category>[a-z0-9_-]+)/(?P<slug>[a-z0-9_-]+)/\+raw$', ArticleRawView.as_view(), name="edit"),
+    url(r'^(?P<category>[a-z0-9_-]+)/(?P<slug>[a-z0-9_-]+)/\+raw$', ArticleRawView.as_view(), name="raw"),
 )

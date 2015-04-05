@@ -1,12 +1,23 @@
-{% extends "base_centered.html" %}
+{% extends "base_multicol.html" %}
 
 {% load i18n %}
 {% load markdown_deux_tags %}
+
+{% block rightbar %}
+<div class="panel-body">
+  <ul class="nav nav-pills nav-stacked">
+    <li><a href="{% url 'lectern:edit' category=object.category.slug slug=object.slug %}"><i class="fa fa-pencil"></i> Edit</a></li>
+    <li><a href="{% url 'lectern:raw' category=object.category.slug slug=object.slug %}"><i class="fa fa-code"></i> View source</a></li>
+  </ul>
+</div>
+
+{% endblock %}
 
 {% block content %}
 
 <article>
 <h1>{{object.title}}</h1>
+<p class="byline">Written on {{object.created}} in <a href="{{object.category.get_absolute_url}}">{{object.category}}</a> {% if object.modified %}(last modified {{object.modified}}){% endif %}</p>
 
 {% if object.abstract %}
 <section class="abstract">
