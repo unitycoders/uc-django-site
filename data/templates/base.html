@@ -11,6 +11,7 @@
 	</head>
 	<body>
         {% load i18n %}
+	{% load gravatar %}
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -25,14 +26,12 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li><a href="{% url 'articles:index' %}">{% trans "articles" %}</a></li>
-						<li><a href="#">{% trans "quizes" %}</a></li>
 					</ul>
 
                                 {% if user.is_authenticated %}
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<span class="glyphicon glyphicon-user"></span>
                         <strong>{{ user }}</strong>
 						<span class="glyphicon glyphicon-chevron-down"></span>
 					</a>
@@ -42,11 +41,11 @@
 								<div class="row">
 									<div class="col-lg-4">
 										<p class="text-center">
-											<span class="glyphicon glyphicon-user icon-size"></span>
+											<img src="{{ user.email | gravatar }}" />
 										</p>
 									</div>
 									<div class="col-lg-8">
-                                        <p class="text-left"><strong>{{ user.get_full_name }}</strong></p>
+                                        <p class="text-left"><strong><a href="{{ user.get_absolute_url }}">{{ user.get_full_name }}</a></strong></p>
 										<p class="text-left">
                                             <a href="{% url "admin:index" %}" class="btn btn-primary btn-block btn-sm">Admin area</a>
 										</p>
