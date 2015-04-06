@@ -6,7 +6,7 @@
 {% block rightbar %}
 <div class="panel-body">
   <ul class="nav nav-pills nav-stacked">
-    <li><a href="{% url 'lectern:edit' category=object.category.slug slug=object.slug %}"><i class="fa fa-pencil"></i> Edit</a></li>
+    {% if perms.lectern.article_edit %}<li><a href="{% url 'lectern:edit' category=object.category.slug slug=object.slug %}"><i class="fa fa-pencil"></i> Edit</a></li>{% endif %}
     <li><a href="{% url 'lectern:raw' category=object.category.slug slug=object.slug %}"><i class="fa fa-code"></i> View source</a></li>
   </ul>
 </div>
