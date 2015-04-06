@@ -11,8 +11,8 @@ class ArticleForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.layout = Layout(
                 TabHolder(
-                    Tab('metadata', 'title', 'slug', 'category', 'abstract'),
-                    Tab('article', 'body', HTML('<div id="body_ide"></div>')),
+                    Tab('article', InlineField('title'), InlineField('body')),
+                    Tab('metadata', Fieldset('Advanced', 'slug', css_id='advanced', css_class='collapse'), 'category', 'abstract'),
                 ),
                 ButtonHolder(Submit('submit', 'Submit', css_class='button white'))
         )
