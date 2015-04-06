@@ -1,5 +1,5 @@
 from django.views.generic.edit import CreateView, UpdateView
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 
 from braces import views
@@ -13,7 +13,8 @@ class ArticleListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(ArticleListView, self).get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
-	context['selected'] = self.kwargs['slug'] if 'slug' in self.kwargs else None
+	if 'slug' in self.kwargs:
+		context['selected'] = get_object_or_404(Category, slug=self.kwargs['slug'])
         return context
 
 class ArticleDetailView(DetailView):

@@ -3,13 +3,13 @@
 {% load bootstrap3 %}
 
 {% block leftbar %}
-<h2 class="muted">Categories</h2>
-<ul class="nav nav-pills nav-stacked">
-    <li {% if not selected %}class="active"{% endif %}><a href="{% url "lectern:index" %}">All articles</a></li>
+<h2 class="sr-only">Categories</h2>
+<div class="list-group">
+    <a class="list-group-item {% if not selected %}active{% endif %}" href="{% url "lectern:index" %}">All articles</a>
     {% for category in categories %}
-    <li {% if selected == category.slug %}class="active"{% endif %}><a href="{% url "lectern:category" category.slug %}">{{category}}</a></li>
+    <a class="list-group-item {% if selected.slug == category.slug %}active{% endif %}"  href="{% url "lectern:category" category.slug %}">{{category}}</a>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}
 
 {% block rightbar %}
@@ -26,6 +26,12 @@
 
 {% block content %}
 <h1 class="sr-only">{% trans "our articles" %}</h1>
+{% if selected %}
+<div class="page-header" style="margin-top: 0;">
+  <h1 style="margin-top: 0">{{selected}}</h1>
+  {% if selected.abstract %}<p class="lead">{{selected.abstract}}</p>{% endif %}
+</div>
+{% endif %}
 
 {% for article in object_list %}
   <article>
