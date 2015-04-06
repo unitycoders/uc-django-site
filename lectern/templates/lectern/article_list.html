@@ -29,7 +29,9 @@
 {% for article in object_list %}
   <article>
     <h1><a href="{{article.get_absolute_url}}">{{article}}</a></h1>
+    <p><i class="fa fa-calendar"></i> {{article.created}}</p>
     <p>{{article.abstract}}</p>
+    <hr />
   </article>
 {% endfor %}
 {% endblock content %}
