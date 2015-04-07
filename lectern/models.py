@@ -34,15 +34,3 @@ class Category(models.Model):
     def __unicode__(self):
         return self.title
 
-class Request(models.Model):
-    summary = models.CharField(max_length=80)
-    category = models.ForeignKey('category')
-    created = models.DateTimeField(auto_now_add=True)
-    details = models.TextField(blank=True)
-
-    def get_absolute_url(self):
-            from django.core.urlresolvers import reverse
-            return reverse('lectern:request-detail', kwargs={'pk':self.pk})
-
-    def __unicode__(self):
-        return self.summary

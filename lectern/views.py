@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 
 from braces import views
 
-from models import Article, Category, Request
+from models import Article, Category
 from forms import ArticleForm
 
 class ArticleListView(ListView):
@@ -42,15 +42,6 @@ class ArticleUpdate(views.LoginRequiredMixin,
     model = Article
     form_class = ArticleForm
     permission_required = "lectern.change_article"
-
-class RequestListView(ListView):
-    model = Request
-
-class RequestDetailView(DetailView):
-    model = Request
-
-class RequestCreate(CreateView):
-    model = Request
 
 # REST api views
 from rest_framework import viewsets

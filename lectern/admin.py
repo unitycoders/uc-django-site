@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import Article, RelatedLink, Category, Request
+from models import Article, RelatedLink, Category
 
 # Register your models here.
 class RelatedLinkInline(admin.TabularInline):
@@ -16,4 +16,3 @@ class ArticleAdmin(admin.ModelAdmin):
 	]
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Category)
-admin.site.register(Request)
