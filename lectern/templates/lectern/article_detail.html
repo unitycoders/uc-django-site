@@ -1,6 +1,7 @@
 {% extends "base_multicol.html" %}
 
 {% load i18n %}
+{% load gravatar %}
 {% load markdown_deux_tags %}
 
 {% block rightbar %}
@@ -16,8 +17,10 @@
 {% block content %}
 
 <article>
-<h1>{{object.title}}</h1>
-<p class="byline">Written on {{object.created}} in <a href="{{object.category.get_absolute_url}}">{{object.category}}</a> {% if object.modified %}(last modified {{object.modified}}){% endif %}</p>
+  <header>
+    <h1>{{object.title}}</h1>
+    <p class="byline">Written on {{object.created}} in <a href="{{object.category.get_absolute_url}}">{{object.category}}</a> {% if object.modified %}(last modified {{object.modified}}){% endif %}</p>
+  </header>
 
 {% if object.abstract %}
 <section class="abstract">
@@ -29,6 +32,21 @@
 <section>
 {{object.body|markdown}}
 </section>
+<footer>
+<div class="media well well-sm">
+  <div class="media-left">
+    <img class="media-object" src="{{user.email|gravatar}}?size=64" alt="" />
+  </div>
+  <div class="media-body">
+    <p class="media-heading"><a href="{{user.get_absolute_url}}">{{user.get_full_name}}</a></p>
+    {{user.bio}}
+  </div>
+</div>
+<hr />
+<small>
+This article is released under the <a href="#">Creative Commons attribution share-alike 3.0 licence</a>.
+</small>
+</footer>
 
 {% if object.relatedlink_set.all %}
 <h2>{% trans "related links" %}</h2>
