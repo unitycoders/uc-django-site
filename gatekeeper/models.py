@@ -9,6 +9,8 @@ import random
 import hashlib
 
 class Member(AbstractUser):
+    bio = models.TextField(blank=True)
+
     class Meta:
 	pass
 
