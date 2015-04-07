@@ -3,10 +3,33 @@
 {% load gravatar %}
 
 {% block content %}
-<div class="page-header">
-  <h1 style="margin-top: 0;">{{object}} <small>{{object.get_username}}</small></h1>
+<div class="page-header" style="margin-top: 0em">
+  <h1 style="margin-top: 0em;">{{object}}</h1>
 </div>
-{% if object.bio %}<p>{{object.bio}}</p>{% endif %}
+
+<div class="row">
+  <div class="col-md-3">
+    <div>
+      <img src="{{object.email|gravatar}}?size=200" alt="gravatar" />
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="https://github.com/{{object.username}}/"><span class="fa fa-github"></span> Github</a></li>
+      </ul>
+    </div>
+    {% if user.is_authenticated %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">Contact Details</h2>
+      </div>
+      <div class="panel-body">
+        <ul class="list-unstyled">
+          <li><span class="fa fa-envelope-o" title="Email"></span> <a href="mailto:{{object.email}}">{{object.email}}</a></li>
+	  <li><span class="fa fa-users" title="xmpp"></span> <a href="xmpp:{{object.email}}">{{object.email}}</a></li>
+          <li>IRC {{object.username}}</li>
+       </ul>
+     </div>
+   </div>{% endif %}
+  </div>
+  <div class="col-md-8">
 
 <div role="tabpanel">
   <ul class="nav nav-tabs" role="tablist">
@@ -16,35 +39,10 @@
 
   <div class="tab-content panel-body">
     <div role="tabpanel" class="tab-pane active" id="overview">
-      <div class="row">
-        <div class="col-md-3">
-	  <div class="thumbnail">
-        	<img src="{{object.email|gravatar}}?size=200" alt="gravatar" />
-		<ul class="nav nav-pills nav-stacked">
-                	<li><a href="https://github.com/{{object.username}}/"><span class="fa fa-github"></span> Github</a></li>
-		</ul>
-	  </div>
-      {% if user.is_authenticated %}
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h2 class="panel-title">Contact Details</h2>
-        </div>
-        <div class="panel-body">
-          <ul class="list-unstyled">
-            <li><span class="fa fa-envelope-o" title="Email"></span> <a href="mailto:{{object.email}}">{{object.email}}</a></li>
-	    <li><span class="fa fa-users" title="xmpp"></span> <a href="xmpp:{{object.email}}">{{object.email}}</a></li>
-	    <li>IRC {{object.username}}</li>
-          </ul>
-         </div>
-      </div>{% endif %}
-        </div>
-	<div class="col-md-8">
-        </div>
-      </div>
+      {{ object.bio }}
     </div>
     <div class="tab-pane" id="account">
-      <h1>Account Details</h1>
-	{% if object.is_staff %}<div class="alert alert-info">user is website admin</div>{% endif %}
+      {% if object.is_staff %}<div class="alert alert-info">user is website admin</div>{% endif %}
 
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -81,5 +79,8 @@
 
     </div>
   </div>
+
+        </div>
+      </div>
 </div>
 {% endblock %}
