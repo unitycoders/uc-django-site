@@ -1,51 +1,34 @@
 {% extends "base_multicol.html" %}
 
 {% load i18n %}
-{% load gravatar %}
 {% load markdown_deux_tags %}
 
-{% block rightbar %}
-<div class="panel-body">
-  <ul class="nav nav-pills nav-stacked">
-    {% if perms.lectern.article_edit %}<li><a href="{% url 'lectern:edit' category=object.category.slug slug=object.slug %}"><i class="fa fa-pencil"></i> Edit</a></li>{% endif %}
-    <li><a href="{% url 'lectern:raw' category=object.category.slug slug=object.slug %}"><i class="fa fa-code"></i> View source</a></li>
-  </ul>
-</div>
-
-{% endblock %}
-
 {% block content %}
-
 <article>
-  <header>
+  <header class="page-header">
     <h1>{{object.title}}</h1>
     <p class="byline">Written on {{object.created}} in <a href="{{object.category.get_absolute_url}}">{{object.category}}</a> {% if object.modified %}(last modified {{object.modified}}){% endif %}</p>
   </header>
 
 {% if object.abstract %}
+<!-- begin abstract -->
 <section class="abstract">
-<h2>{% trans "abstract" %}</h2>
-{{object.abstract}}
+  <h2>{% trans "abstract" %}</h2>
+  {{object.abstract}}
 </section>
+<!-- end abstract -->
 {% endif %}
 
 <section>
 {{object.body|markdown}}
 </section>
+
 <footer>
-<div class="media well well-sm">
-  <div class="media-left">
-    <img class="media-object" src="{{user.email|gravatar}}?size=64" alt="" />
-  </div>
-  <div class="media-body">
-    <p class="media-heading"><a href="{{user.get_absolute_url}}">{{user.get_full_name}}</a></p>
-    {{user.bio}}
-  </div>
-</div>
-<hr />
-<small>
-This article is released under the <a href="#">Creative Commons attribution share-alike 3.0 licence</a>.
-</small>
+  {% include "parts/author_bio.html" with author=user %}
+  <hr />
+  <small>
+    This article is released under the <a href="#">Creative Commons attribution share-alike 3.0 licence</a>.
+  </small>
 </footer>
 
 {% if object.relatedlink_set.all %}
@@ -57,4 +40,13 @@ This article is released under the <a href="#">Creative Commons attribution shar
 </ul>
 </article>
 {% endif %}
+{% endblock %}
+
+{% block rightbar %}
+<div class="panel-body">
+  <ul class="nav nav-pills nav-stacked">
+    {% if perms.lectern.article_edit %}<li><a href="{% url 'lectern:edit' category=object.category.slug slug=object.slug %}"><i class="fa fa-pencil"></i> Edit</a></li>{% endif %}
+    <li><a href="{% url 'lectern:raw' category=object.category.slug slug=object.slug %}"><i class="fa fa-code"></i> View source</a></li>
+  </ul>
+</div>
 {% endblock %}

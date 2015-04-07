@@ -19,3 +19,16 @@
 .icon-size {
     font-size: 87px;
 }
+
+.page-header{
+	margin-top: 0;
+}
+
+.page-footer{
+	margin-top: 40px;
+	padding: 40px 0px;
+	text-align: center;
+	background-color: #F9F9F9;
+	color: #999;
+	border-top: 1px solid #E5E5E5;
+}
