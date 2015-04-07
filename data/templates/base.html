@@ -26,6 +26,12 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li><a href="{% url 'articles:index' %}">{% trans "articles" %}</a></li>
+ 						<li>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "community" %}</a>
+							<ul class="dropdown-menu">
+								<li><a href="{% url 'accounts:profile'%}">{% trans "our member" %}</a></li>
+							</ul>
+						</li>
 					</ul>
 
                                 {% if user.is_authenticated %}
