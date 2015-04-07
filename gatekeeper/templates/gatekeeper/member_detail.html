@@ -3,6 +3,10 @@
 {% load gravatar %}
 
 {% block content %}
+<div class="page-header">
+  <h1 style="margin-top: 0;">{{object.get_username}} <small>{{object.get_full_name}}</small></h1>
+  {% if object.bio %}<p>{{object.bio}}</p>{% endif %}
+</div>
 
 <div role="tabpanel">
   <ul class="nav nav-tabs" role="tablist">
@@ -34,9 +38,7 @@
          </div>
       </div>{% endif %}
         </div>
-        <div class="col-md-8">
-          <h1 style="margin-top: 0;">{{object.get_username}} <small>{{object.get_full_name}}</small></h1>
-          {% if object.bio %}<p>{{object.bio}}</p>{% endif %}
+	<div class="col-md-8">
         </div>
       </div>
     </div>
