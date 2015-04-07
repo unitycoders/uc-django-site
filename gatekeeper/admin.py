@@ -1,8 +1,13 @@
 from django.contrib import admin
 
-from models import Invite
+from models import Member,Invite
 
-# Register your models here.
+class MemberManager(admin.ModelAdmin):
+	search_fields = ['username', 'first_name', 'last_name']
+	list_display = ['username', 'email'] 
+	pass
+admin.site.register(Member, MemberManager)
+
 class InviteManager(admin.ModelAdmin):
 	search_fields = ['name', 'email']
 	list_display = ['name', 'email', 'request_date']

@@ -92,6 +92,9 @@ STATICFILES_DIRS = [os.path.join(DATA_DIR, 'theme')]
 STATIC_ROOT = os.path.join(VAR_DIR, 'static')
 STATIC_URL = '/static/'
 
+# Gatekeeper Profile
+AUTH_USER_MODEL = 'gatekeeper.Member'
+
 # Markdown deux
 MARKDOWN_DEUX_STYLES = {
     "default": {

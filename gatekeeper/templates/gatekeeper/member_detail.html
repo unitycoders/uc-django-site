@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 
+{% load gravatar %}
+
 {% block content %}
-<div class="alert alert-warning">
-<strong>Warning</strong> This is just a mockup - data is hard coded for webpigeon
-</div>
 
 <div role="tabpanel">
   <ul class="nav nav-tabs" role="tablist">
@@ -14,33 +13,33 @@
   <div class="tab-content panel-body">
     <div role="tabpanel" class="tab-pane active" id="overview">
       <div class="row">
-        <div class="col-xs-3">
+        <div class="col-md-3">
 	  <div class="thumbnail">
-        	<img src="https://www.gravatar.com/avatar/{{object.gravatar}}?s=200" alt="gravatar" />
+        	<img src="{{object.email|gravatar}}?size=200" alt="gravatar" />
 		<ul class="nav nav-pills nav-stacked">
-			<li><a href="">Messages</a></li>
-                	<li><a href="https://github.com/webpigeon/"><span class="fa fa-github"></span> Github</a></li>
+                	<li><a href="https://github.com/{{object.username}}/"><span class="fa fa-github"></span> Github</a></li>
 		</ul>
 	  </div>
+      {% if user.is_authenticated %}
       <div class="panel panel-default">
         <div class="panel-heading">
           <h2 class="panel-title">Contact Details</h2>
         </div>
         <div class="panel-body">
-          <dl>
-            <dt>Email</dt>
-            <dd>webpigeon@unitycoders.co.uk</dd>
-	    <dt>XMPP</dt>
-	    <dd>webpigeon@unitycoders.co.uk</dd>
+          <dl class="dl-horizontal">
+            <dt><span class="fa fa-envelope-o" title="Email"></span></dt>
+            <dd><a href="mailto:{{object.email}}">{{object.email}}</a></dd>
+	    <dt><span class="fa fa-users" title="xmpp"></span></dt>
+	    <dd><a href="xmpp:{{object.email}}">{{object.email}}</a></dd>
 	    <dt>IRC</dt>
-	    <dd>WebPigeon</dd>
+	    <dd>{{object.username}}</dd>
           </dl>
          </div>
-      </div>
+      </div>{% endif %}
         </div>
-        <div class="col-xs-8">
+        <div class="col-md-8">
           <h1 style="margin-top: 0;">{{object.get_username}} <small>{{object.get_full_name}}</small></h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae ex enim. Donec semper nisl nec bibendum pretium. Aliquam in nulla turpis. Cras libero erat, molestie ut erat ut, vulputate rutrum nisi. Phasellus leo orci, gravida id diam eget, accumsan tempor neque. Cras laoreet augue ut nibh ullamcorper tempor. Maecenas malesuada nulla non diam tincidunt iaculis. Proin gravida nisl vitae urna tincidunt maximus. Fusce non congue eros. Donec libero ipsum, eleifend id quam nec, finibus laoreet felis. Vestibulum blandit nunc et arcu ullamcorper, ornare tristique justo ullamcorper. Duis eget diam felis. </p>
+          {% if object.bio %}<p>{{object.bio}}</p>{% endif %}
         </div>
       </div>
     </div>

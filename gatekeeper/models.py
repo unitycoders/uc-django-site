@@ -1,31 +1,26 @@
 from django.db import models
+from django.conf import settings
+from django.core.urlresolvers import reverse
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
 import string
 import random
 import hashlib
 
-class Member(User):
+class Member(AbstractUser):
     class Meta:
-        proxy = True
+	pass
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('profile-detail', (), {
-            'slug': self.username,
-        })
-
-    def _get_gravatar(self):
-        return hashlib.md5(self.email.lower()).hexdigest()
-    gravatar = property(_get_gravatar)
+        return reverse('gatekeeper:profile', kwargs={'slug': self.username,})
 
 # Create your models here.
 class Invite(models.Model):
 	name = models.CharField(max_length=50)
 	email = models.EmailField()
 	request_date = models.DateField(auto_now_add=True)
-	requester = models.ForeignKey('auth.user')
+	requester = models.ForeignKey(settings.AUTH_USER_MODEL)
 	key = models.CharField(max_length=25, blank=True)
 
 	def generate_key(self):
