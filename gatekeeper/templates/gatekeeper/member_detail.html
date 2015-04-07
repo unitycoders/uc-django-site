@@ -26,14 +26,11 @@
           <h2 class="panel-title">Contact Details</h2>
         </div>
         <div class="panel-body">
-          <dl class="dl-horizontal">
-            <dt><span class="fa fa-envelope-o" title="Email"></span></dt>
-            <dd><a href="mailto:{{object.email}}">{{object.email}}</a></dd>
-	    <dt><span class="fa fa-users" title="xmpp"></span></dt>
-	    <dd><a href="xmpp:{{object.email}}">{{object.email}}</a></dd>
-	    <dt>IRC</dt>
-	    <dd>{{object.username}}</dd>
-          </dl>
+          <ul class="list-unstyled">
+            <li><span class="fa fa-envelope-o" title="Email"></span> <a href="mailto:{{object.email}}">{{object.email}}</a></li>
+	    <li><span class="fa fa-users" title="xmpp"></span> <a href="xmpp:{{object.email}}">{{object.email}}</a></li>
+	    <li>IRC {{object.username}}</li>
+          </ul>
          </div>
       </div>{% endif %}
         </div>
