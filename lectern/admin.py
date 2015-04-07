@@ -9,7 +9,7 @@ class RelatedLinkInline(admin.TabularInline):
 class ArticleAdmin(admin.ModelAdmin):
 	prepopulated_fields = {"slug": ("title",)}
 	search_fields = ['title']
-	list_display = ['__unicode__', 'slug']
+	list_display = ['title', 'slug', 'category']
 	list_filter = ['created', 'modified']
 	inlines = [
 		RelatedLinkInline
