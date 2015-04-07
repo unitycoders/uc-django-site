@@ -11,10 +11,10 @@ class ArticleForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.layout = Layout(
                 TabHolder(
-                    Tab('article', InlineField('title'), InlineField('body')),
-                    Tab('metadata', Fieldset('Advanced', 'slug', css_id='advanced', css_class='collapse'), 'category', 'abstract'),
+                    Tab('article', InlineField('title'), InlineField('body'), Div(Div(Field('category'),css_class='col-xs-6'), css_class='row')),
+                    Tab('metadata', Fieldset('Advanced', PrependedText('slug', 'http://unitycoders.co.uk/articles/mycategory/'), css_id='advanced', css_class='collapse'), 'abstract'),
                 ),
-                ButtonHolder(Submit('submit', 'Submit', css_class='button white'))
+                ButtonHolder(Submit('submit', 'Submit'))
         )
         self.helper.html5_required = True
 
