@@ -1,0 +1,23 @@
+from __future__ import absolute_import # optional, but I like it
+from .common import *
+
+# Debug utils (if you don't have django-debug-toolbar, comment this out)
+INSTALLED_APPS += ( 'debug_toolbar', )
+
+# Production overrides
+DEBUG = True
+TEMPLATE_DEBUG = True
+INTERNAL_IPS = ['127.0.0.1',]
+SECRET_KEY = 'YouAreTestingSoThisDoesntMatter'
+
+# Envriomental Settings
+ALLOWED_HOSTS = ['localhost']
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #output emails to console rather than sending them
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(VAR_DIR, 'db.sqlite3'),
+    }
+}
+
+ADMINS = ()

@@ -10,21 +10,18 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))+"/../"
 DATA_DIR = os.path.join(BASE_DIR, 'data')
 VAR_DIR = os.path.join(BASE_DIR, 'var') # volitile data
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'cg7uc78#=kmi#1g%p0clzh=i@r-duu2+1els3&m_uitp5ytb!!'
+SECRET_KEY = '' # Override this in your production settings
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
-
+# default to disabling everything
+DEBUG = False
+TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = []
 
 
@@ -56,7 +53,6 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'unitycoders.urls'
-
 WSGI_APPLICATION = 'unitycoders.wsgi.application'
 
 
@@ -74,15 +70,10 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
 LANGUAGE_CODE = 'en-gb'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/

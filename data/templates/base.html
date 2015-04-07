@@ -71,6 +71,11 @@
         </div>
 	</nav>
 	<div class="container">
+		{% if debug %}
+		<div class="alert alert-warning">
+			<strong>Debug Mode</strong> This website is in debug mode, it's probably a testing enviroment.
+		</div>
+		{% endif %}
         {% block container %}
 		    {% block content %}{% endblock %}
         {% endblock %}

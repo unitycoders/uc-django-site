@@ -8,6 +8,8 @@ __pycache__/
 # Django
 db.sqlite3
 var/
+unitycoders/settings/debug.py
+unitycoders/settings/prod.py
 
 # Distribution / packaging
 .Python
