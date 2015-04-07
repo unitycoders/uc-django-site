@@ -27,6 +27,10 @@ class Category(models.Model):
     slug = models.SlugField(max_length=25, unique=True)
     abstract = models.TextField(blank=True, null=True)
 
+    def get_absolute_url(self):
+            from django.core.urlresolvers import reverse
+            return reverse('lectern:category', kwargs={'slug':self.slug})
+
     def __unicode__(self):
         return self.title
 
