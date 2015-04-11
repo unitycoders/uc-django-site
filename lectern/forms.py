@@ -20,6 +20,7 @@ class ArticleForm(forms.ModelForm):
 
     class Meta:
         model = Article
+	fields = ('title', 'body', 'category', 'slug', 'abstract')
         widgets = {
                 'abstract': forms.Textarea(attrs={'rows':4}),
         }
