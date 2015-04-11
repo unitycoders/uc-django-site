@@ -1,6 +1,8 @@
 from django.conf.urls import patterns, url
 from views import ArticleListView, ArticleRawView, ArticleDetailView, ArticleCreate, ArticleUpdate
 
+from lectern import rest_views
+
 urlpatterns = patterns('',
     url(r'^$', ArticleListView.as_view(), name="index"),
     url(r'^(?P<slug>[a-z0-9_-]+)/$', ArticleListView.as_view(), name="category"),
