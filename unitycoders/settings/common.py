@@ -93,6 +93,7 @@ MARKDOWN_DEUX_STYLES = {
             "code-friendly": None,
             "fenced-code-blocks": None,
             "tables": None,
+            "metadata": None
         },
         "safe_mode": "escape",
     },
