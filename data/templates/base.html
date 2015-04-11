@@ -1,92 +1,37 @@
+{% load staticfiles i18n %}
 <!doctype html>
 <html>
-	<head>
-    <title>Unity Coders :: {% block title %}Welcome to the website{% endblock %}</title>
-		<link rel="stylesheet" href="{{STATIC_URL}}/css/bootstrap.min.css">
-		<link rel="stylesheet" href="{{STATIC_URL}}/css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="{{STATIC_URL}}/css/unitycoders-theme.css">
-		<link rel="stylesheet" href="{{STATIC_URL}}/css/pygments-github.css">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-        {% block page-assets %}{% endblock %}
-	</head>
-	<body>
-        {% load i18n %}
-	{% load gravatar %}
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="{% url "home" %}"><img src="{{STATIC_URL}}/imgs/logo.png" style="height: 25px;" alt="Unity Coders" /></a>
-				</div>
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li><a href="{% url 'articles:index' %}">{% trans "articles" %}</a></li>
- 						<li>
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "community" %}</a>
-							<ul class="dropdown-menu">
-								<li><a href="{% url 'accounts:profile'%}">{% trans "our member" %}</a></li>
-							</ul>
-						</li>
-					</ul>
+  <head>
+    <title>{% if site %}{{ site }} :: {% endif %}{% block title %}{% trans "welcome to the website" %}{% endblock title %}</title>
 
-                                {% if user.is_authenticated %}
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <strong>{{ user }}</strong>
-						<span class="glyphicon glyphicon-chevron-down"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li>
-							<div class="navbar-login">
-								<div class="row">
-									<div class="col-lg-4">
-										<p class="text-center">
-											<img src="{{ user.email | gravatar }}" />
-										</p>
-									</div>
-									<div class="col-lg-8">
-                                        <p class="text-left"><strong><a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a></strong></p>
-										<p class="text-left">
-                                            <a href="{% url "admin:index" %}" class="btn btn-primary btn-block btn-sm">Admin area</a>
-										</p>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	{% else %}
-		<ul class="nav navbar-nav navbar-right">
-		  <li><a href="{% url 'accounts:login' %}">Login</a></li>
-		<ul>
-        {% endif %}
-        </div>
-	</nav>
-	<div class="container">
-		{% if debug %}
-		<div class="alert alert-warning">
-			<strong>Debug Mode</strong> This website is in debug mode, it's probably a testing enviroment.
-		</div>
-		{% endif %}
-        {% block container %}
-		    {% block content %}{% endblock %}
-        {% endblock %}
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap-theme.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/pygments-github.css" %}">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static "css/unitycoders-theme.css" %}">
+    {% block meta_tags %}{% endblock meta_tags %}
+    {% block extra_head %}{% block page-assets %}{% endblock page-assets %}{% endblock %}
+  </head>
+  <body>
+    {% load gravatar %}
+    {% include "parts/navbar.html" %}
+    <div class="container">
+      {% if debug %}
+        <div class="alert alert-warning">
+	  <strong>Debug Mode</strong> This website is in debug mode, it's probably a testing enviroment.
 	</div>
-        <footer class="page-footer">
-          <p>Copyright notice</p>
-          <ul class="list-inline">
-            <li><a href="https://github.com/unitycoders/uc-django-site">Source</a></li>
-        </footer>
+      {% endif %}
+      {% block container %}
+	{% block content %}{% endblock %}
+      {% endblock %}
+    </div>
+    <footer class="page-footer">
+      <p>Copyright notice</p>
+      <ul class="list-inline">
+	<li><a href="https://github.com/unitycoders/uc-django-site">Source</a></li>
+    </footer>
     <script src="{{STATIC_URL}}/js/jquery-2.1.3.js"></script>
     <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
-    {% block page-scripts %}{% endblock %}
-</body>
+    {% block extra_js %}{% block page-scripts %}{% endblock page-scripts %}{% endblock extra_js %}
+  </body>
 </html>
