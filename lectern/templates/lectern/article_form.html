@@ -5,6 +5,8 @@
 {% load markdown_deux_tags %}
 {% load crispy_forms_tags %}
 
+{% block title %}{% if object %}{% blocktrans %}Editing {{ object }}{% endblocktrans %}{% else %}{% trans "Write new article" %}{% endif %}{% endblock title %}
+
 {% block page-scripts %}
 <script src="{{STATIC_URL}}/js/slugify/jquery.slugify.js" type="text/javascript"></script>
 <script src="{{STATIC_URL}}/markdown/js/bootstrap-markdown.js"></script>

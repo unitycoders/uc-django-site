@@ -3,7 +3,9 @@
 {% load i18n %}
 {% load markdown_deux_tags %}
 
-{% block page-scripts %}
+{% block title %}{{object.title}}{% endblock title %}
+
+{% block extra_js %}
 <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
