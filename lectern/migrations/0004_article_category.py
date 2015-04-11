@@ -6,8 +6,8 @@ from django.db import models, migrations
 def createModel(apps, schema_editor):
     Category = apps.get_model("lectern", "Category")
     category = Category()
-    category.title = "Migrated Data"
-    category.slug = "legacy"
+    category.title = "Miscellaneous"
+    category.slug = "misc"
     category.save()
 
 class Migration(migrations.Migration):
