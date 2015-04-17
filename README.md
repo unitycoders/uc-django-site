@@ -1,7 +1,7 @@
 # uc-django-site
 Unity Coders django based website
 
-## Setting up the envrioment
+## Setting up the environment
 ~~~
 $ git clone git@github.com:unitycoders/uc-django-site.git
 $ mkvirtualenv uc-web #optional
