@@ -15,22 +15,22 @@ MathJax.Hub.Config({
 {% endblock %}
 
 {% block content %}
-<article>
+<article class="h-entry">
   <header class="page-header">
-    <h1>{{object.title}}</h1>
+    <h1 class="p-name">{{object.title}}</h1>
     <p class="byline">Written on {{object.created}} in <a href="{{object.category.get_absolute_url}}">{{object.category}}</a> {% if object.modified %}(last modified {{object.modified}}){% endif %}</p>
   </header>
 
 {% if object.abstract %}
 <!-- begin abstract -->
-<section class="abstract">
+<section class="abstract p-summary">
   <h2>{% trans "abstract" %}</h2>
   {{object.abstract}}
 </section>
 <!-- end abstract -->
 {% endif %}
 
-<section>
+<section class="e-content">
 {{object.body|markdown}}
 </section>
 
