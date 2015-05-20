@@ -35,10 +35,10 @@ MathJax.Hub.Config({
 </section>
 
 <footer>
-  {% include "parts/author_bio.html" with author=user %}
+  {% include "blocks/author_bio.html" with author=user %}
   <hr />
   <small>
-    This article is released under the <a href="#">Creative Commons attribution share-alike 3.0 licence</a>.
+    {% include "lectern/blocks/copyright.html" with author=user article=object %}
   </small>
 </footer>
 
