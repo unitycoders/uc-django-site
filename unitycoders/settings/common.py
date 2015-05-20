@@ -28,6 +28,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,7 +44,6 @@ INSTALLED_APPS = (
     'markdown_deux',
     'bootstrap3',
     'crispy_forms',
-    'gatekeeper',
     'lectern',
 )
 
@@ -78,13 +83,26 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+	"django.contrib.auth.context_processors.auth",
+	"django.contrib.messages.context_processors.messages",
+	"django.template.context_processors.debug",
+	"django.template.context_processors.i18n",
+	"django.template.context_processors.media",
+	"django.template.context_processors.static",
+	"django.template.context_processors.tz",
+	'django.core.context_processors.request',
+	'allauth.account.context_processors.account',
+	'allauth.socialaccount.context_processors.socialaccount',
+)
+
 TEMPLATE_DIRS = [os.path.join(DATA_DIR, 'templates')]
 STATICFILES_DIRS = [os.path.join(DATA_DIR, 'theme')]
 STATIC_ROOT = os.path.join(VAR_DIR, 'static')
 STATIC_URL = '/static/'
 
 # Gatekeeper Profile
-AUTH_USER_MODEL = 'gatekeeper.Member'
+#AUTH_USER_MODEL = 'gatekeeper.Member'
 
 # Markdown deux
 MARKDOWN_DEUX_STYLES = {
@@ -110,3 +128,9 @@ REST_FRAMEWORK = {
 
 # django crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+# Authentication Backends
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)

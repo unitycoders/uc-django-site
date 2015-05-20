@@ -15,7 +15,7 @@ urlpatterns = patterns('',
 
     url(r'^$', TemplateView.as_view(template_name="unitycoders/index.html"), name='home'),
     url(r'^articles/', include('lectern.urls', namespace='articles', app_name="lectern")),
-    url(r'^accounts/', include('gatekeeper.urls', namespace='accounts', app_name='gatekeeper')),
+    url(r'^accounts/', include('allauth.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
     # REST API stuff
