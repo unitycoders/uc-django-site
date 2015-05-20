@@ -1,0 +1,33 @@
+{% load static i18n %}
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static "imgs/logo.png" %}" style="width: 25px; height: 25px;" alt="Unity Coders" /></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="{% url 'articles:index' %}">{% trans "articles"|title %}</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="{{user.get_absolute_url}}" class="dropdown-toggle"  data-target="#" data-toggle="dropdown">{% if user.is_authenticated %}{{user}}{% else %}{% trans "Not logged in" %}{% endif %}</a>
+        <div class="dropdown-menu">
+	{% if user.is_authenticated %}
+          <div class="media" style="padding: 1em;">
+            <div class="media-left">
+              <a href="{( user.get_absolute_url )}">
+                <img class="media-object" src="{{ user.email }}" alt="" />
+              </a>
+            </div>
+            <div class="media-body">
+              <strong>{{user}}</strong>
+              {% if user.is_staff %}<a href="{% url "admin:index" %}">{% trans "Admin area" %}</a>{% endif %}
+            </div>
+          </div>
+	{% else %}
+	{% endif %}
+        </div>
+      </li>
+    </ul> 
+  </div>
+</nav>
