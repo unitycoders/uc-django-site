@@ -1,14 +1,14 @@
 {% extends "lectern/base_multicol.html" %}
 
-{% load i18n %}
+{% load i18n staticfiles %}
 {% load markdown_deux_tags %}
 
 {% block title %}{{object.title}}{% endblock title %}
 
 {% block extra_js %}
-<script src="{{STATIC_URL}}js/jquery-ui/jquery-ui.js"></script>
-<script src="{{STATIC_URL}}js/tocify/jquery.tocify.js"></script>
-<link href="{{STATIC_URL}}js/tocify/jquery.tocify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="{% static 'jquery-ui/ui/jquery-ui.js' %}"></script>
+<script type="text/javascript" src="{% static 'jquery.tocify.js/src/javascripts/jquery.tocify.js' %}"></script>
+
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({

@@ -128,4 +128,5 @@ BOWER_INSTALLED_APPS = (
 	'jquery-slugify',
 	'bootstrap-markdown',
 	'fontawesome',
+	'jquery.tocify.js',
 )
