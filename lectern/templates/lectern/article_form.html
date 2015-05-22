@@ -13,48 +13,17 @@
   {% endif %}
 {% endblock title %}
 
+{% block page-assets %}
+<link type="text/css" href="{% static 'bootstrap-markdown/css/bootstrap-markdown.min.css' %}" rel="stylesheet"></link>
+{% endblock %}
+
+
 {% block page-scripts %}
 <script type="text/javascript" src="{% static 'speakingurl/speakingurl.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'jquery-slugify/dist/slugify.js' %}"></script>
 <script type="text/javascript" src="{% static 'bootstrap-markdown/js/bootstrap-markdown.js' %}"></script>
-<link type="text/css" href="{% static 'bootstrap-markdown/css/bootstrap-markdown.min.css' %}" rel="stylesheet"></link>
 
 <script type"text/javascript">
-function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie != '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = jQuery.trim(cookies[i]);
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-
-function doPreview(e){
-	var previewUrl = "/api/articles/preview/";
-	var retVal = "";
-	var csrftoken = getCookie('csrftoken');
-	var params = {'body': e.getContent(), 'csrfmiddlewaretoken':csrftoken}
-
-	jQuery.ajax({
-		url: previewUrl,
-		data: params,
-		success: function(html) {
-			retVal = html;
-		},
-		method: 'POST',
-    		async:false
-  	});
-
-	return retVal.markdown;
-}
-
 jQuery(function($){
 	$('#id_slug').slugify('#id_title');
 	$('#id_body').markdown({
