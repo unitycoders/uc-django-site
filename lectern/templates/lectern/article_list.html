@@ -1,6 +1,5 @@
 {% extends "lectern/base_multicol.html" %}
-{% load i18n %}
-{% load uc-bootstrap3 %}
+{% load i18n themetools %}
 
 {% block title %}{{ selected.title|default:"All articles" }}{% endblock %}
 
@@ -41,5 +40,5 @@
   {% include "lectern/blocks/article-summary.html" with article=article %}
 {% endfor %}
 
-{% include "lectern/blocks/pager.html" %}
+{% include "themetools/blocks/pager.html" %}
 {% endblock content %}

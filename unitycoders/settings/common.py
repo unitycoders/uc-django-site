@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
     'rest_framework',
+    'bs_themetools',
     'markdown_deux',
     'bootstrap3',
     'crispy_forms',
