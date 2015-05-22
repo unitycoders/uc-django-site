@@ -16,8 +16,8 @@
 {% block page-scripts %}
 <script type="text/javascript" src="{% static 'speakingurl/speakingurl.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'jquery-slugify/dist/slugify.js' %}"></script>
-<script src="{{STATIC_URL}}/markdown/js/bootstrap-markdown.js"></script>
-<link rel="stylesheet" href="{{STATIC_URL}}/markdown/css/bootstrap-markdown.min.css" type="text/css"></link>
+<script type="text/javascript" src="{% static 'bootstrap-markdown/js/bootstrap-markdown.js' %}"></script>
+<link type="text/css" href="{% static 'bootstrap-markdown/css/bootstrap-markdown.min.css' %}" rel="stylesheet"></link>
 
 <script type"text/javascript">
 function getCookie(name) {
