@@ -10,6 +10,17 @@
 {% endblock %}
 
 {% block content %}
+{% if debug %}
+  <div class="panel panel-warning" style="margin-top: 20px;">
+    <div class="panel-heading">
+      <h3 class="panel-title">Website in Development Mode</h3>
+    </div>
+    <div class="panel-body">
+      <p>Some website features may not function correctly. Please report any <a href="https://github.com/unitycoders/uc-django-site/issues">problems on github</a>. Content may not be backed up and may be deleted without notice.</p>
+    </div>
+  </div>
+{% endif %}
+
 <div class="row">
   <div class="col-xs-9">
   {% for article in articles %}
