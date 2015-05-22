@@ -16,7 +16,10 @@ urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name="unitycoders/index.html"), name='home'),
     url(r'^articles/', include('lectern.urls', namespace='articles', app_name="lectern")),
     url(r'^accounts/', include('gatekeeper.urls', namespace='accounts', app_name='gatekeeper')),
+
+    # Django contrib
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^pages/', include('django.contrib.flatpages.urls')),
 
     # REST API stuff
     url(r'^api/', include(router.urls, namespace='api')),

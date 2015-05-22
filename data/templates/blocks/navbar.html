@@ -1,4 +1,4 @@
-{% load static i18n %}
+{% load static i18n flatpages %}
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
@@ -7,6 +7,10 @@
     </div>
     <ul class="nav navbar-nav">
       <li><a href="{% url 'articles:index' %}">{% trans "articles"|title %}</a></li>
+      {% get_flatpages '/about/' as pages %}
+      {% for page in pages %}
+      <li><a href="{{page.url}}">{{page.title}}</a></li>
+      {% endfor %}
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
