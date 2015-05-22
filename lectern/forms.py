@@ -12,7 +12,7 @@ class ArticleForm(forms.ModelForm):
         self.helper.layout = Layout(
                 TabHolder(
                     Tab('article', InlineField('title'), InlineField('body'), Div(Div(Field('category'),css_class='col-xs-6'), css_class='row')),
-                    Tab('metadata', Fieldset('Advanced', PrependedText('slug', 'http://unitycoders.co.uk/articles/mycategory/'), css_id='advanced', css_class='collapse'), 'abstract'),
+                    Tab('metadata', PrependedText('slug', '/articles/&lt;category&gt;/'), 'abstract'),
                 ),
                 ButtonHolder(Submit('submit', 'Submit'))
         )
