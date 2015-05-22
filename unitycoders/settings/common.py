@@ -125,4 +125,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 BOWER_INSTALLED_APPS = (
 	'jquery#1.9',
 	'bootstrap',
+	'jquery-slugify',
 )
