@@ -1,11 +1,17 @@
-{% extends "base_centered.html" %}
+{% extends "lectern/base_multicol.html" %}
 
 {% load i18n %}
-{% load bootstrap3 %}
+{% load uc-bootstrap3 %}
 {% load markdown_deux_tags %}
 {% load crispy_forms_tags %}
 
-{% block title %}{% if object %}{% blocktrans %}Editing {{ object }}{% endblocktrans %}{% else %}{% trans "Write new article" %}{% endif %}{% endblock title %}
+{% block title %}
+  {% if object %}
+    {% blocktrans %}Editing {{ object }}{% endblocktrans %}
+  {% else %}
+    {% trans "Write new article" %}
+  {% endif %}
+{% endblock title %}
 
 {% block page-scripts %}
 <script src="{{STATIC_URL}}/js/slugify/jquery.slugify.js" type="text/javascript"></script>

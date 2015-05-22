@@ -1,4 +1,4 @@
-{% extends "base_multicol.html" %}
+{% extends "lectern/base_multicol.html" %}
 
 {% load i18n %}
 {% load markdown_deux_tags %}
@@ -6,27 +6,42 @@
 {% block title %}{{object.title}}{% endblock title %}
 
 {% block extra_js %}
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src="{{STATIC_URL}}js/jquery-ui/jquery-ui.js"></script>
+<script src="{{STATIC_URL}}js/tocify/jquery.tocify.js"></script>
+<link href="{{STATIC_URL}}js/tocify/jquery.tocify.css" type="text/css" rel="stylesheet" />
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
 });
+$('#toc').tocify({
+  'context': $('#article'),
+  'selectors': 'h2, h3, h4',
+  'scrollTo': 70,
+  'extendPage': false,
+  'theme': 'bootstrap'
+});
 </script>
 {% endblock %}
 
+{% block leftbar %}
+<div id="toc"></div>
+{% endblock %}
+
 {% block content %}
-<article class="h-entry">
+<article id="article" class="h-entry">
   <header class="page-header">
     <h1 class="p-name">{{object.title}}</h1>
-    <p class="byline">Written on {{object.created}} in <a href="{{object.category.get_absolute_url}}">{{object.category}}</a> {% if object.modified %}(last modified {{object.modified}}){% endif %}</p>
+    <p class="byline">
+      Written on {{object.created}} in
+      <a href="{{object.category.get_absolute_url}}">{{object.category}}</a>
+      {% if object.modified %}(last modified {{object.modified}}){% endif %}
+    </p>
   </header>
 
 {% if object.abstract %}
 <!-- begin abstract -->
-<section class="abstract p-summary">
-  <h2>{% trans "abstract" %}</h2>
-  {{object.abstract}}
-</section>
+<p class="lead p-summary">{{object.abstract}}</p>
 <!-- end abstract -->
 {% endif %}
 
@@ -56,8 +71,20 @@ MathJax.Hub.Config({
 {% block rightbar %}
 <div class="panel-body">
   <ul class="nav nav-pills nav-stacked">
-    {% if perms.lectern.article_edit %}<li><a href="{% url 'lectern:edit' category=object.category.slug slug=object.slug %}"><i class="fa fa-pencil"></i> Edit</a></li>{% endif %}
-    <li><a href="{% url 'lectern:raw' category=object.category.slug slug=object.slug %}"><i class="fa fa-code"></i> View source</a></li>
+    {% if perms.lectern.article_edit %}
+      <li>
+        <a href="{% url 'lectern:edit' category=object.category.slug slug=object.slug %}">
+          <i class="fa fa-pencil"></i>
+          Edit
+        </a>
+      </li>
+    {% endif %}
+    <li>
+      <a href="{% url 'lectern:raw' category=object.category.slug slug=object.slug %}">
+        <i class="fa fa-code"></i>
+        View source
+      </a>
+    </li>
   </ul>
 </div>
 {% endblock %}

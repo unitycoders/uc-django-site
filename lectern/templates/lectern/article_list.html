@@ -1,6 +1,6 @@
-{% extends "base_multicol.html" %}
+{% extends "lectern/base_multicol.html" %}
 {% load i18n %}
-{% load bootstrap3 %}
+{% load uc-bootstrap3 %}
 
 {% block title %}{{ selected.title|default:"All articles" }}{% endblock %}
 
@@ -16,9 +16,9 @@
 
 {% block rightbar %}
 <h2 class="sr-only">Actions</h2>
-<ul class="nav nav-pills nav-stacked">
+<ul class="nav nav-list">
     {% if perms.lectern.article_add %}
-    <li><a href="{% url "lectern:add" %}"><i class="fa fa-plus" aria-hidden="true"></i> Write an article</a></li>
+    <li><a href="{% url "lectern:add" %}">{% fa_icon 'plus' %} Write an article</a></li>
     {% endif %}
 </ul>
 {% endblock %}
@@ -35,7 +35,7 @@
 {% for article in object_list %}
   <article>
     <h1><a href="{{article.get_absolute_url}}">{{article}}</a></h1>
-    <p><i class="fa fa-calendar"></i> {{article.created}}</p>
+    <p>{% fa_icon 'calendar' %} {{article.created}}</p>
     <p>{{article.abstract}}</p>
     <hr />
   </article>
