@@ -33,11 +33,6 @@
 {% endif %}
 
 {% for article in object_list %}
-  <article>
-    <h1><a href="{{article.get_absolute_url}}">{{article}}</a></h1>
-    <p>{% fa_icon 'calendar' %} {{article.created}}</p>
-    <p>{{article.abstract}}</p>
-    <hr />
-  </article>
+  {% include "lectern/blocks/article-summary.html" with article=article %}
 {% endfor %}
 {% endblock content %}

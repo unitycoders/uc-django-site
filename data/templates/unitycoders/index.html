@@ -1,22 +1,23 @@
-{% extends "base_centered.html" %}
+{% extends "base.html" %}
+
+{% block topblock %}
+<div class="top-banner" >
+  <div class="container">
+    <h1>Welcome</h1>
+    <p class="lead">{{line}}</p>
+  </div>
+</div>
+{% endblock %}
 
 {% block content %}
-  <h2>What We Do</h2>
-  <p>Unity Coders is an informal group of Free Software users and developers.</p>
-  <hr />
-
-  <div class="row">
-      <div class="col-sm-4">
-          <h2>Articles</h2>
-          <p>Our members have a range of interests and their collected wisdom can be found in our articles section.</p>
-      </div>
-      <div class="col-sm-4">
-          <h2>Code</h2>
-          <p>Our members work on a range of Free Software projects. </p>
-      </div>
-      <div class="col-sm-4">
-          <h2>Tools</h2>
-          <p>We supply advice and access a range of state of the art Free Software tools for our members to use. </p>
-      </div>
+<div class="row">
+  <div class="col-xs-9">
+  {% for article in articles %}
+    {% include "lectern/blocks/article-summary.html" with article=article %}
+  {% empty %}
+    <h2>No articles to display</h2>
+    <p>No articles have been published yet...</p>
+  {% endfor %}
   </div>
+</div>
 {% endblock %}

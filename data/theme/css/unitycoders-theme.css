@@ -2,6 +2,20 @@ body {
 	padding-top: 70px;
 }
 
+/* top section bleed code */
+.top-banner {
+	background-color: #eef;
+	margin-top: -20px; /* counteracts the spacing on other pages */
+	padding-top: 50px;
+	padding-bottom: 50px;
+	border-bottom: #dde 1px solid;
+}
+
+.top-banner h1 {
+	margin-top: 0;
+	font-size: 60px;
+}
+
 .abstract {
     width: 95%;
     font-style: oblique;

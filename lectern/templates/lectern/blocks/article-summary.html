@@ -1,0 +1,7 @@
+{% load uc-bootstrap3 %}
+<article>
+  <h1><a href="{{article.get_absolute_url}}">{{article}}</a></h1>
+  <p>{% fa_icon 'calendar' %} {{article.created}}</p>
+  <p>{{article.abstract}}</p>
+  <hr />
+</article>

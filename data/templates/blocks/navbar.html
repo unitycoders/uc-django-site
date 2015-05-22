@@ -6,11 +6,17 @@
       <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static "imgs/logo.png" %}" style="width: 25px; height: 25px;" alt="Unity Coders" /></a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="{% url 'articles:index' %}">{% trans "articles"|title %}</a></li>
       {% get_flatpages '/about/' as pages %}
-      {% for page in pages %}
-      <li><a href="{{page.url}}">{{page.title}}</a></li>
-      {% endfor %}
+      {% if pages %}
+      <li><a href="#" class="dropdown-toggle" data-target="#" data-toggle="dropdown">About</a>
+        <ul class="dropdown-menu">
+          {% for page in pages %}
+          <li><a href="{{page.url}}">{{page.title}}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endif %}
+      <li><a href="{% url 'articles:index' %}">{% trans "articles"|title %}</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
@@ -32,6 +38,6 @@
 	{% endif %}
         </div>
       </li>
-    </ul> 
+    </ul>
   </div>
 </nav>
