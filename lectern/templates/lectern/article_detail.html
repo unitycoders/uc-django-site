@@ -8,8 +8,7 @@
 {% block extra_js %}
 <script type="text/javascript" src="{% static 'jquery-ui/ui/jquery-ui.js' %}"></script>
 <script type="text/javascript" src="{% static 'jquery.tocify.js/src/javascripts/jquery.tocify.js' %}"></script>
-
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="{% static 'MathJax/MathJax.js' %}?config=TeX-AMS-MML_HTMLorMML"></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}

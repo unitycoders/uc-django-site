@@ -129,4 +129,5 @@ BOWER_INSTALLED_APPS = (
 	'bootstrap-markdown',
 	'fontawesome',
 	'jquery.tocify.js',
+	'MathJax',
 )
