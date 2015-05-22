@@ -16,7 +16,7 @@
   </head>
   <body>
     {% include "blocks/navbar.html" %}
-    
+
     {% block topblock %}
     {% endblock %}
 
@@ -31,7 +31,7 @@
         <li><a href="https://github.com/unitycoders/uc-django-site">Source</a></li>
       </ul>
     </footer>
-    <script src="{{STATIC_URL}}/js/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="{% static 'jquery/jquery.js' %}"></script>
     <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
     {% block extra_js %}{% block page-scripts %}{% endblock page-scripts %}{% endblock extra_js %}
   </body>

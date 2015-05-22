@@ -36,10 +36,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
+    'djangobower',
     'rest_framework',
     'bs_themetools',
     'markdown_deux',
-    'bootstrap3',
     'crispy_forms',
     'gatekeeper',
     'lectern',
@@ -54,6 +54,12 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware'
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangobower.finders.BowerFinder',
 )
 
 ROOT_URLCONF = 'unitycoders.urls'
@@ -85,6 +91,7 @@ USE_TZ = True
 TEMPLATE_DIRS = [os.path.join(DATA_DIR, 'templates')]
 STATICFILES_DIRS = [os.path.join(DATA_DIR, 'theme')]
 STATIC_ROOT = os.path.join(VAR_DIR, 'static')
+BOWER_COMPONENTS_ROOT = os.path.join(VAR_DIR, 'components/')
 STATIC_URL = '/static/'
 
 # Gatekeeper Profile
@@ -114,3 +121,7 @@ REST_FRAMEWORK = {
 
 # django crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+BOWER_INSTALLED_APPS = (
+	'jquery#1.9',
+)
