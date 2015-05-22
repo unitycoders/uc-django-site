@@ -40,4 +40,6 @@
 {% for article in object_list %}
   {% include "lectern/blocks/article-summary.html" with article=article %}
 {% endfor %}
+
+{% include "lectern/blocks/pager.html" %}
 {% endblock content %}
