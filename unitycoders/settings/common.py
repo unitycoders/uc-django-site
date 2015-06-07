@@ -14,6 +14,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))+"/../"
 DATA_DIR = os.path.join(BASE_DIR, 'data')
 VAR_DIR = os.path.join(BASE_DIR, 'var') # volitile data
 
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
@@ -24,15 +26,9 @@ DEBUG = False
 TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.github',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -94,8 +90,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 	"django.template.context_processors.static",
 	"django.template.context_processors.tz",
 	'django.core.context_processors.request',
-	'allauth.account.context_processors.account',
-	'allauth.socialaccount.context_processors.socialaccount',
 )
 
 TEMPLATE_DIRS = [os.path.join(DATA_DIR, 'templates')]
@@ -131,13 +125,10 @@ REST_FRAMEWORK = {
 # django crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-ACCOUNT_FORMS = {
-	'login': 'unitycoders.forms.LoginForm',
-	'signup': 'unitycoders.forms.RegisterForm'
-}
-
-# Authentication Backends
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-)
+# Modular settings
+import os.path
+import glob
+conffiles = glob.glob(os.path.join(os.path.dirname(__file__), 'apps/', '*.conf'))
+conffiles.sort()
+for f in conffiles:
+    execfile(os.path.abspath(f))
