@@ -32,6 +32,13 @@
             </div>
           </div>
 	{% else %}
+	<div style="padding: 1em">
+		<p>{% trans "You are not logged in" %}</p>
+		<ul class="list-inline">
+			<li><a href="{% url 'account_login' %}">{% trans "Login" %}</a></li>
+			<li><a href="{% url 'account_signup' %}">{% trans "Signup" %}</a></li>
+		</ul>
+	</div>
 	{% endif %}
         </div>
       </li>
