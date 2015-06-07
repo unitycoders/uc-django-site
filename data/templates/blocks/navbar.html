@@ -19,29 +19,14 @@
       <li><a href="{% url 'articles:index' %}">{% trans "articles"|title %}</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown">
-        <a href="{{user.get_absolute_ur}}" class="dropdown-toggle"  data-target="#" data-toggle="dropdown">{% if user.is_authenticated %}{{user}}{% else %}{% trans "Not logged in" %}{% endif %}</a>
-        <div class="dropdown-menu">
-	{% if user.is_authenticated %}
-          <div class="media" style="padding: 1em;">
-            <div class="media-left">
-            </div>
-            <div class="media-body">
-              <strong>{%user_display user%}</strong>
-              {% if user.is_staff %}<a href="{% url "admin:index" %}">{% trans "Admin area" %}</a>{% endif %}
-            </div>
-          </div>
-	{% else %}
-	<div style="padding: 1em">
-		<p>{% trans "You are not logged in" %}</p>
-		<ul class="list-inline">
-			<li><a href="{% url 'account_login' %}">{% trans "Login" %}</a></li>
-			<li><a href="{% url 'account_signup' %}">{% trans "Signup" %}</a></li>
-		</ul>
-	</div>
-	{% endif %}
-        </div>
-      </li>
+      {% if user.is_authenticated %}
+	<li><a href="#">{% user_display user %}</a></li>
+        <li><a href="{% url "account_logout" %}">{% trans "Logout" %}</a></li>
+	{% if user.is_staff %}<li><a href="{% url "admin:index" %}">{% trans "Admin area" %}</a></li>{% endif %}
+      {% else %}
+        <li><a href="{% url "account_login" %}">{% trans "Login" %}</a></li>
+	<li><a href="{% url "account_signup" %}">{% trans "Register" %}</a></li>
+      {% endif %}
     </ul>
   </div>
 </nav>
