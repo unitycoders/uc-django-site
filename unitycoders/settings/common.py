@@ -37,8 +37,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
     'bs_themetools',
-    'bootstrap3',
-    'crispy_forms',
     'lectern',
 )
 
@@ -97,9 +95,6 @@ STATIC_URL = '/static/'
 
 # Gatekeeper Profile
 #AUTH_USER_MODEL = 'gatekeeper.Member'
-
-# django crispy forms
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # Modular settings
 import os.path
