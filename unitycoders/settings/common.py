@@ -36,9 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
-    'rest_framework',
     'bs_themetools',
-    'markdown_deux',
     'bootstrap3',
     'crispy_forms',
     'lectern',
@@ -99,28 +97,6 @@ STATIC_URL = '/static/'
 
 # Gatekeeper Profile
 #AUTH_USER_MODEL = 'gatekeeper.Member'
-
-# Markdown deux
-MARKDOWN_DEUX_STYLES = {
-    "default": {
-        "extras": {
-            "code-friendly": None,
-            "fenced-code-blocks": None,
-            "tables": None,
-            "metadata": None
-        },
-        "safe_mode": "escape",
-    },
-}
-
-# Django rest framework
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}
 
 # django crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
