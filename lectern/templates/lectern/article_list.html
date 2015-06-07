@@ -1,6 +1,5 @@
-{% extends "base_multicol.html" %}
-{% load i18n %}
-{% load bootstrap3 %}
+{% extends "lectern/base_multicol.html" %}
+{% load i18n themetools %}
 
 {% block title %}{{ selected.title|default:"All articles" }}{% endblock %}
 
@@ -16,9 +15,9 @@
 
 {% block rightbar %}
 <h2 class="sr-only">Actions</h2>
-<ul class="nav nav-pills nav-stacked">
+<ul class="nav nav-list">
     {% if perms.lectern.article_add %}
-    <li><a href="{% url "lectern:add" %}"><i class="fa fa-plus" aria-hidden="true"></i> Write an article</a></li>
+    <li><a href="{% url "lectern:add" %}">{% fa_icon 'plus' %} Write an article</a></li>
     {% endif %}
 </ul>
 {% endblock %}
@@ -30,14 +29,16 @@
   <h1>{{selected}}</h1>
   {% if selected.abstract %}<p class="lead">{{selected.abstract}}</p>{% endif %}
 </div>
+{% else %}
+<div class="page-header">
+  <h1>Articles</h1>
+  <p class="lead">This section of our website contains articles contributed by our members.</p>
+</div>
 {% endif %}
 
 {% for article in object_list %}
-  <article>
-    <h1><a href="{{article.get_absolute_url}}">{{article}}</a></h1>
-    <p><i class="fa fa-calendar"></i> {{article.created}}</p>
-    <p>{{article.abstract}}</p>
-    <hr />
-  </article>
+  {% include "lectern/blocks/article-summary.html" with article=article %}
 {% endfor %}
+
+{% include "themetools/blocks/pager.html" %}
 {% endblock content %}

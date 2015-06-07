@@ -1,4 +1,4 @@
-{% load static i18n account %}
+{% load static i18n account flatpages %}
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
@@ -6,6 +6,16 @@
       <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static "imgs/logo.png" %}" style="width: 25px; height: 25px;" alt="Unity Coders" /></a>
     </div>
     <ul class="nav navbar-nav">
+      {% get_flatpages '/about/' as pages %}
+      {% if pages %}
+      <li><a href="#" class="dropdown-toggle" data-target="#" data-toggle="dropdown">About</a>
+        <ul class="dropdown-menu">
+          {% for page in pages %}
+          <li><a href="{{page.url}}">{{page.title}}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endif %}
       <li><a href="{% url 'articles:index' %}">{% trans "articles"|title %}</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -25,6 +35,6 @@
 	{% endif %}
         </div>
       </li>
-    </ul> 
+    </ul>
   </div>
 </nav>

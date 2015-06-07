@@ -6,6 +6,7 @@ DEBUG = False
 SECRET_KEY = ''
 
 # Envriomental Settings
+SITE_ID = 1
 ALLOWED_HOSTS = ['unitycoders.co.uk', 'unitycoders.uk']
 DATABASES = []
 EMAIL_BACKEND = []

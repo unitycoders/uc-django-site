@@ -3,31 +3,33 @@
 <html>
   <head>
     <title>{% if site %}{{ site }} :: {% endif %}{% block title %}{% trans "welcome to the website" %}{% endblock title %}</title>
+    {% block meta_tags %}{% endblock meta_tags %}
 
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
     <link rel="stylesheet" href="{% static "css/bootstrap-theme.min.css" %}">
     <link rel="stylesheet" href="{% static "css/pygments-github.css" %}">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static "css/unitycoders-theme.css" %}">
-    {% block meta_tags %}{% endblock meta_tags %}
-    {% block extra_head %}{% block page-assets %}{% endblock page-assets %}{% endblock %}
+    {% block extra_head %}
+      {% block page-assets %}{% endblock page-assets %}
+    {% endblock %}
   </head>
   <body>
     {% include "blocks/navbar.html" %}
+    
+    {% block topblock %}
+    {% endblock %}
+
     <div class="container">
-      {% if debug %}
-        <div class="alert alert-warning">
-	  <strong>Debug Mode</strong> This website is in debug mode, it's probably a testing enviroment.
-	</div>
-      {% endif %}
       {% block container %}
-	{% block content %}{% endblock %}
+        {% block content %}{% endblock %}
       {% endblock %}
     </div>
     <footer class="page-footer">
-      <p>Copyright notice</p>
+      <p>{% include "blocks/copyright.html" %}</p>
       <ul class="list-inline">
-	<li><a href="https://github.com/unitycoders/uc-django-site">Source</a></li>
+        <li><a href="https://github.com/unitycoders/uc-django-site">Source</a></li>
+      </ul>
     </footer>
     <script src="{{STATIC_URL}}/js/jquery-2.1.3.js"></script>
     <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>

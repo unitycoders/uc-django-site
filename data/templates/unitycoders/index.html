@@ -1,22 +1,35 @@
-{% extends "base_centered.html" %}
+{% extends "base.html" %}
+
+{% block topblock %}
+<div class="top-banner" >
+  <div class="container">
+    <h1>Welcome</h1>
+    <p class="lead">{{line}}</p>
+  </div>
+</div>
+{% endblock %}
 
 {% block content %}
-  <h2>What We Do</h2>
-  <p>Unity Coders is an informal group of Free Software users and developers.</p>
-  <hr />
-
-  <div class="row">
-      <div class="col-sm-4">
-          <h2>Articles</h2>
-          <p>Our members have a range of interests and their collected wisdom can be found in our articles section.</p>
-      </div>
-      <div class="col-sm-4">
-          <h2>Code</h2>
-          <p>Our members work on a range of Free Software projects. </p>
-      </div>
-      <div class="col-sm-4">
-          <h2>Tools</h2>
-          <p>We supply advice and access a range of state of the art Free Software tools for our members to use. </p>
-      </div>
+{% if debug %}
+  <div class="panel panel-warning" style="margin-top: 20px;">
+    <div class="panel-heading">
+      <h3 class="panel-title">Website in Development Mode</h3>
+    </div>
+    <div class="panel-body">
+      <p>Some website features may not function correctly. Please report any <a href="https://github.com/unitycoders/uc-django-site/issues">problems on github</a>. Content may not be backed up and may be deleted without notice.</p>
+    </div>
   </div>
+{% endif %}
+
+<div class="row">
+  <div class="col-xs-9">
+  {% for article in articles %}
+    {% include "lectern/blocks/article-summary.html" with article=article %}
+  {% empty %}
+    <h2>No articles to display</h2>
+    <p>No articles have been published yet...</p>
+  {% endfor %}
+  <a class="btn pull-right" href="{% url 'lectern:index' %}" role="button">Read more</a>
+  </div>
+</div>
 {% endblock %}

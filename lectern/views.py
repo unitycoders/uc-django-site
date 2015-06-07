@@ -9,6 +9,7 @@ from forms import ArticleForm
 
 class ArticleListView(ListView):
     model = Article
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super(ArticleListView, self).get_context_data(**kwargs)

@@ -6,6 +6,8 @@ from rest_framework import routers
 
 from lectern.rest_views import ArticleViewSet
 
+from unitycoders import views
+
 router = routers.DefaultRouter()
 router.register(r'articles', ArticleViewSet)
 
@@ -13,10 +15,13 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', TemplateView.as_view(template_name="unitycoders/index.html"), name='home'),
+    url(r'^$', views.HomeView.as_view(), name='home'),
     url(r'^articles/', include('lectern.urls', namespace='articles', app_name="lectern")),
     url(r'^accounts/', include('allauth.urls')),
+
+    # Django contrib
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^pages/', include('django.contrib.flatpages.urls')),
 
     # REST API stuff
     url(r'^api/', include(router.urls, namespace='api')),
