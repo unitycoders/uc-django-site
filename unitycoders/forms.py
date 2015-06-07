@@ -13,18 +13,15 @@ class LoginForm(AALoginForm):
         super(LoginForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.layout = Layout(
-		'login',
+		Field('login'),
 		'password',
 		'remember',
-                ButtonHolder(Submit('login', 'Login', css_class='btn btn-primary btn-block'))
+                ButtonHolder(Submit('loginBtn', 'Login', css_class='btn btn-primary btn-block'))
         )
         self.helper.html5_required = True
 
     class Meta:
 	fields = ('login', 'password', 'remember')
-        widgets = {
-                'abstract': forms.Textarea(attrs={'rows':4}),
-        }
 
 class RegisterForm(AASignupForm):
     def __init__(self, *args, **kwargs):
@@ -41,6 +38,3 @@ class RegisterForm(AASignupForm):
 
     class Meta:
 	fields = ('username', 'email', 'password1', 'password2')
-        widgets = {
-                'abstract': forms.Textarea(attrs={'rows':4}),
-        }
