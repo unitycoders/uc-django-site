@@ -131,6 +131,11 @@ REST_FRAMEWORK = {
 # django crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
+ACCOUNT_FORMS = {
+	'login': 'unitycoders.forms.LoginForm',
+	'signup': 'unitycoders.forms.RegisterForm'
+}
+
 # Authentication Backends
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
